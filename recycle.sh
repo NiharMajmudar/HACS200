@@ -15,7 +15,6 @@ pct unlock $ct_num
 pct stop $ct_num --skiplock 1
 
 # Unmount container again
-# (it’s silly, but we need to do this because of pct’s inconsistency)
 pct unmount $ct_num
 
 # Destroy the container
@@ -25,7 +24,7 @@ pct destroy $ct_num
 # Prepare template for cloneing
 pct unlock 201
 
-# We want to repeatedly try the clone process until it succeeds
+# Repeatedly try the clone process until it succeeds
 while ! pct clone 201 $ct_num --experimental false; do
     # Wait for 30 seconds before trying again
     sleep 30;
